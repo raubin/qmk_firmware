@@ -44,25 +44,26 @@ enum planck_keycodes {
 // Layer activation
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
-#define L3 MO(_LAYER_3)
+// Layer 3 when held, esc when tapped
+#define L3 LT(_LAYER_3, KC_ESC)
 
 // Browser forward and back macros (Chrome)
 #define BROWSEBACK LGUI(LSFT(KC_LBRACKET))
 #define BROWSEFORW LGUI(LSFT(KC_RBRACKET))
 
 // Better snap tool macros
-#define BST_LFT LGUI(LALT(LSFT(KC_1)))
-#define BST_RT LGUI(LALT(LSFT(KC_2)))
-#define BST_FULL LGUI(LALT(LSFT(KC_3)))
-#define BST_TL
-#define BST_TR
-#define BST_BL
-#define BST_BR
-#define BST_LTHRD
-#define BST_RTHRD
-#define BST_L2THRD
-#define BST_R2THRD
-#define BST_SCRN
+#define BST_LFT LGUI(LALT(KC_1))        // Left half
+#define BST_RT  LGUI(LALT(KC_2))        // Right half
+#define BST_FULL LGUI(LALT(KC_3))       // Full screen
+#define BST_TL LGUI(LALT(LSFT(KC_1)))   // Top left quarter
+#define BST_TR LGUI(LALT(LSFT(KC_2)))   // Top right quarter
+#define BST_BL LGUI(LALT(LSFT(KC_3)))   // Bottome left quarter
+#define BST_BR LGUI(LALT(LSFT(KC_4)))   // Bottom right quarter
+#define BST_LTHRD LCAG(KC_1)
+#define BST_RTHRD LCAG(KC_2)
+#define BST_L2THRD LCAG(KC_3)
+#define BST_R2THRD LCAG(KC_4)
+#define BST_SCRN LGUI(LALT(KC_4))       // Move to next screen
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -81,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
     L3,      KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
-    BROWSEBACK, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   BROWSEFORW
+    BROWSEBACK, KC_LCTL, KC_LALT, KC_LGUI, LOWER, KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP, BROWSEFORW
 ),
 
 /* Layer 3
@@ -98,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LAYER_3] = LAYOUT_planck_grid(
     _______, KC_VOLD, KC_VOLU, _______, _______, _______, _______, _______, KC_ESC , _______, _______, _______,
     _______, KC_VOLD, KC_MPLY, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    _______, BST_LFT, BST_RT ,BST_FULL,BST_SCRN, _______, _______, _______, _______, _______, _______, _______,
     BACKLIT, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 ),
 
