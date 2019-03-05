@@ -14,8 +14,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "planck.h"
-#include "action_layer.h"
+// #include "planck.h"
+// #include "action_layer.h"
+#include QMK_KEYBOARD_H
 #include "muse.h"
 
 extern keymap_config_t keymap_config;
@@ -96,14 +97,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift|      |      |      |      |      |      |      |      |      |      |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Brite| Ctrl | Alt  | GUI  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
+ * | Brite| Ctrl | Alt  | GUI  |Lower | FDel | Bksp |Raise | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_LAYER_3] = LAYOUT_planck_grid(
-    _______, KC_VOLD, KC_VOLU, _______, _______, _______, _______, _______, KC_ESC , _______, _______, _______,
+    _______, KC_VOLD, KC_VOLU, _______, _______, _______, _______, _______, KC_ESC , _______, _______, KC_DEL,
     _______, KC_VOLD, KC_MPLY, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
     _______, BST_LFT, BST_RT ,BST_FULL,BST_SCRN, _______, _______, _______, _______, _______, _______, _______,
-    BACKLIT, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+    BACKLIT, _______, _______, _______, _______, KC_DEL, KC_BSPC , _______, _______, _______, _______, _______
 ),
 
 /* Colemak
