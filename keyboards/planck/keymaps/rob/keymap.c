@@ -67,7 +67,10 @@ enum planck_keycodes {
 #define BST_SCRN LGUI(LALT(KC_4))       // Move to next screen
 
 // OS X Screenshot shortcuts
+// Straight to clipboard
 #define CAP_SCRN LGUI(LSFT(LCTL(KC_4)))
+// Editable on Mojave+
+#define CAP_SCR2 LGUI(LSFT(KC_4))
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -79,14 +82,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Browsr| Ctrl | Alt  | GUI  |Lower |    Space    |Raise |  Up  | Down | SCRN |Browsr|
+ * |Browsr| Ctrl | Alt  | GUI  |Lower |    Space    |Raise |  SCRN  | Down | Up |Browsr|
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_planck_grid(
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_BSPC,
     L3,      KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,  KC_QUOT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_ENT ,
-    BROWSEBACK, KC_LCTL, KC_LALT, KC_LGUI, LOWER, KC_SPC, KC_SPC, RAISE,    KC_UP,   KC_DOWN, CAP_SCRN, BROWSEFORW
+    BROWSEBACK, KC_LCTL, KC_LALT, KC_LGUI, LOWER, KC_SPC, KC_SPC, RAISE,    CAP_SCRN,KC_DOWN, KC_UP,    BROWSEFORW
 ),
 
 /* Layer 3
@@ -101,10 +104,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_LAYER_3] = LAYOUT_planck_grid(
-    _______, KC_VOLD, KC_VOLU, _______, _______, _______, _______, _______, KC_ESC , _______, _______, KC_DEL,
-    _______, KC_VOLD, KC_MPLY, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
-    _______, BST_LFT, BST_RT ,BST_FULL,BST_SCRN, _______, _______, _______, _______, _______, _______, _______,
-    BACKLIT, _______, _______, _______, _______, KC_DEL, KC_BSPC , _______, _______, _______, _______, _______
+    _______, KC_VOLD, KC_VOLU, _______, _______, _______, _______, _______, KC_ESC ,  _______, _______, KC_DEL,
+    _______, KC_VOLD, KC_MPLY, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP,    KC_RGHT, _______, _______,
+    _______, BST_LFT, BST_RT ,BST_FULL,BST_SCRN, _______, _______, _______, _______,  _______, _______, _______,
+    BACKLIT, _______, _______, _______, _______, KC_DEL, KC_BSPC , _______, CAP_SCR2, _______, _______, _______
 ),
 
 /* Colemak
